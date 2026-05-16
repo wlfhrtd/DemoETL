@@ -24,7 +24,8 @@
 		<InvariantGlobalization>false</InvariantGlobalization>
 
 		<!-- debug -->
-		<DebugType>embedded</DebugType>
+		<DebugType>none</DebugType>
+		<DebugSymbols>false</DebugSymbols>
 
 		<!-- metadata -->
 		<AssemblyName>DemoETL</AssemblyName>

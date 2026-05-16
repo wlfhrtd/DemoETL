@@ -1,5 +1,8 @@
-````markdown
+````markdown id="v4u3my"
 # DemoETL
+
+![.NET](https://img.shields.io/badge/.NET-10-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
 Демонстрационный ETL pipeline для преобразования Excel-документов в XML-файлы, совместимые с XSD-схемами ФНС России.
 
