@@ -1,0 +1,32 @@
+```gitignore
+# build
+bin/
+obj/
+
+# publish
+publish/
+
+# artifacts
+artifacts/
+output/
+
+# user
+*.user
+*.suo
+
+# vs
+.vs/
+
+# logs
+*.log
+
+# rider
+.idea/
+
+# resharper
+_ReSharper*/
+
+# OS
+Thumbs.db
+.DS_Store
+```

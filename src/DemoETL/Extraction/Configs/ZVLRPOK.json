@@ -1,0 +1,99 @@
+/*
+Описания полей в гриде экселя, из которых экстракторы достают данные во время обработки маппером.
+
+Зачем: поддержание вариативности через конфигурацию (вынос конфигурации) без необходимости рекомпиляции проекта.
+Примеры: "количество", "кол-во", БИН вместо ИНН, ошибки тайпинга.
+*/
+
+/* Пример
+{
+    "Fields": {
+        "Inn": [ "ИНН", "ИНН организации" ],
+        "Kpp": [ "КПП" ],
+        "OrganizationName": [ "Наименование", "Организация" ]
+    },
+    "Table": {
+        "Header": [ "Наименование", "Товар" ],
+        "Columns": {
+            "Name": [ "Наименование" ],
+            "Quantity": [ "Количество", "Кол-во" ],
+            "Price": [ "Стоимость", "Сумма" ]
+        }
+    }
+}
+*/
+
+{
+    "Fields": {
+        "Inn": [ "Покупатель" ],
+        "Kpp": [ "КПП" ],
+        "OrganizationContextLabels": [ "01", "2" ],
+        "OrganizationTargetLabel": [ "2" ],
+        "SignerName": [
+            "Достоверность и полноту сведений"
+        ],
+        "LeasingMark": [
+            "в случае заключения договора лизинга"
+        ],
+        "TollingMark": [
+            "в случае заключения договора переработки давальческого сырья"
+        ]
+    },
+    "Sheets": "1",
+    "Defaults": {
+        "SignerType": "2",
+        "StatementReason": "1"
+    },
+    "Totals": {
+        "RowAnchor": "ИТОГО",
+        "VatBaseTotalParentHeader": "Налоговая база",
+        "VatBaseTotalChildHeader": "НДС",
+        "VatTotalParentHeader": "Суммы налогов",
+        "VatTotalChildHeader": "НДС",
+        "ExciseTotalParentHeader": "Суммы налогов",
+        "ExciseTotalChildHeader": "Акцизов"
+    },
+    "Contract": {
+        "SellerId": [ "Продавец" ],
+        "SellerIsIndividual": [ "в случае заключения договора о приобретении товара у физического лица" ],
+        "SellerName": [ "01" ],
+        "SellerCountryCode": [ "03" ],
+        "SellerAddress": [ "03" ],
+        "BuyerId": [ "Покупатель" ],
+        "BuyerName": [ "2" ],
+        "BuyerCountryCode": [ "03" ],
+        "BuyerAddress": [ "03" ],
+        "ContractDocumentNumber": [ "№ договора (контракта)" ],
+        "ContractDocumentDate": [ "Дата договора (контракта)" ],
+        "SpecificationApplicationNumber": [ "1" ],
+        "SpecificationNumber": [ "№ спецификации" ],
+        "SpecificationDate": [ "дата спецификации" ]
+    },
+    "Table": {
+        "Header": [ "Стоимость товара", "Количество товара" ],
+        "VerticalOffsetToFirstProduct": 4,
+        "Name": [ "Наименование товара" ],
+        "TnVedCode": [ "Код товара ТН ВЭД" ],
+        "UnitCode": [ "Еди- ница изме- ре-" ],
+        "Quantity": [ "Количество", "Кол-во", "Количество товара" ],
+        "Price": [ "Стоимость", "Стоимость товара" ],
+        "CurrencyCode": [ "Валюта", "код" ],
+        "CurrencyRate": [ "Валюта", "курс" ],
+        "CurrencyMultiplier": [ "1" ],
+        "InvoiceNumber": [ "Счет-фактура", "", "номер" ],
+        "InvoiceDate": [ "Счет-фактура", "", "дата" ],
+        "AcceptanceDate": [ "Дата приня- тия на  учет то-" ],
+        "ExciseBase": [ "Налоговая база", "акцизов" ],
+        "ExciseUnitCode": [ "Налоговая база", "акцизов" ],
+        "VatBase": [ "Налоговая база", "НДС" ],
+        "ExciseRateFixed": [ "Ставки налога", "акцизов", "твердые (специ- фические)" ],
+        "ExciseRateAdValorem": [ "Ставки налога", "акцизов", "адвалорные" ],
+        "VatRate": [ "Ставки налога", "НДС" ],
+        "ExciseAmount": [ "Суммы налогов", "акцизов" ],
+        "VatAmount": [ "Суммы налогов", "НДС" ],
+        "IsExciseExempt": [ "1" ],
+        "IsVatExempt": [ "1" ],
+        "TransportDocumentNumber": [ "Транспортный (товаросопрово- дительный) документ", "", "серия, номер" ],
+        "TransportDocumentDate": [ "Транспортный (товаросопрово- дительный) документ", "", "дата" ]
+    }
+}

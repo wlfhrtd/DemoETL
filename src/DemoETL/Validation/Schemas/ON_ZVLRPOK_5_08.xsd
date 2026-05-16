@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<!-- ================= ROOT ================= -->
+
+	<xs:element name="Файл">
+		<xs:complexType>
+			<xs:sequence>
+
+				<xs:element name="Документ">
+					<xs:complexType>
+						<xs:sequence>
+
+							<!-- ================= Sender ================= -->
+
+							<xs:element name="СвОтпр">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ОтпрЮЛ">
+											<xs:complexType>
+												<xs:attribute name="НаимОрг"
+                                                              type="xs:string"
+                                                              use="required"/>
+
+												<xs:attribute name="ИННЮЛ"
+                                                              type="ИННТип"
+                                                              use="required"/>
+
+												<xs:attribute name="КПП"
+                                                              type="КППТип"
+                                                              use="required"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+
+							<!-- ================= Signer ================= -->
+
+							<xs:element name="Подписант">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ФИО">
+											<xs:complexType>
+												<xs:attribute name="Фамилия"
+                                                              type="xs:string"
+                                                              use="required"/>
+
+												<xs:attribute name="Имя"
+                                                              type="xs:string"
+                                                              use="required"/>
+
+												<xs:attribute name="Отчество"
+                                                              type="xs:string"
+                                                              use="optional"/>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+
+									<xs:attribute name="ПрПодп"
+                                                  type="ПрПодпТип"
+                                                  use="required"/>
+								</xs:complexType>
+							</xs:element>
+
+							<!-- ================= Declaration ================= -->
+
+							<xs:element name="СвЗвл">
+								<xs:complexType>
+
+									<xs:sequence>
+
+										<!-- Contract Info -->
+										<xs:element name="СвКонтракт1"
+                                                    minOccurs="1"
+                                                    maxOccurs="unbounded">
+
+											<xs:complexType>
+												<xs:sequence>
+
+													<xs:element name="СвКонтр1"
+                                                                minOccurs="1"
+                                                                maxOccurs="unbounded">
+
+														<xs:complexType>
+															<xs:sequence>
+
+																<xs:element name="СвСпециф"
+                                                                            minOccurs="0"
+                                                                            maxOccurs="unbounded">
+
+																	<xs:complexType>
+																		<xs:attribute name="НомПСпециф"
+                                                                                      type="xs:string"
+                                                                                      use="required"/>
+
+																		<xs:attribute name="НомСпециф"
+                                                                                      type="xs:string"
+                                                                                      use="required"/>
+
+																		<xs:attribute name="ДатаСпециф"
+                                                                                      type="ДатаТип"
+                                                                                      use="required"/>
+																	</xs:complexType>
+
+																</xs:element>
+
+															</xs:sequence>
+
+															<xs:attribute name="НомКонтр"
+                                                                          type="xs:string"
+                                                                          use="required"/>
+
+															<xs:attribute name="ДатаКонтр"
+                                                                          type="ДатаТип"
+                                                                          use="required"/>
+														</xs:complexType>
+
+													</xs:element>
+
+												</xs:sequence>
+
+												<xs:attribute name="ИдНомПродР1"
+                                                              type="xs:string"
+                                                              use="optional"/>
+
+												<xs:attribute name="ПрПродФЛ"
+															  type="xs:string"
+														      use="required"/>
+
+												<xs:attribute name="НаимПродР1"
+                                                              type="xs:string"
+                                                              use="required"/>
+
+												<xs:attribute name="КодСтранПродР1"
+															  type="xs:string"
+															  use="required"/>
+
+												<xs:attribute name="АдресПродР1"
+															  type="xs:string"
+															  use="required"/>
+
+												<xs:attribute name="ИдНомПокР1"
+                                                              type="xs:string"
+                                                              use="required"/>
+
+												<xs:attribute name="НаимПокР1"
+                                                              type="xs:string"
+                                                              use="required"/>
+
+												<xs:attribute name="КодСтранПокР1"
+															  type="xs:string"
+															  use="required"/>
+
+												<xs:attribute name="АдресПокР1"
+														      type="xs:string"
+															  use="required"/>
+
+											</xs:complexType>
+
+										</xs:element>
+
+										<!-- products -->
+										<xs:element name="СвТовар"
+                                                    maxOccurs="unbounded">
+
+											<xs:complexType>
+												<xs:sequence>
+
+													<xs:element name="СвТСД"
+                                                                minOccurs="1"
+																maxOccurs="unbounded">
+
+														<xs:complexType>
+															<xs:attribute name="СерНомТСД"
+                                                                          type="xs:string"
+                                                                          use="required"/>
+
+															<xs:attribute name="ДатаТСД"
+                                                                          type="ДатаТип"
+                                                                          use="required"/>
+														</xs:complexType>
+
+													</xs:element>
+
+												</xs:sequence>
+
+												<xs:attribute name="НомТовПП"
+                                                              type="xs:positiveInteger"
+                                                              use="required"/>
+
+												<xs:attribute name="НаимТов"
+                                                              type="xs:string"
+                                                              use="required"/>
+
+												<xs:attribute name="ТНВЭД"
+															  type="xs:string"
+															  use="optional"/>
+
+												<xs:attribute name="ЕдИзмТов"
+															  type="xs:string"
+															  use="required"/>
+
+												<xs:attribute name="КоличТов"
+                                                              type="Decimal6Str"
+                                                              use="required"/>
+
+												<xs:attribute name="СтоимТов"
+                                                              type="MoneyStr"
+                                                              use="required"/>
+
+												<xs:attribute name="ВалТов"
+															  type="xs:string"
+															  use="required"/>
+
+												<xs:attribute name="КурсВал"
+															  type="xs:string"
+															  use="required"/>
+
+												<xs:attribute name="БазаВал"
+															  type="xs:string"
+															  use="required"/>
+
+												<xs:attribute name="НомСчФ"
+															  type="xs:string"
+															  use="required"/>
+
+												<xs:attribute name="ДатаСчФ"
+															  type="xs:string"
+															  use="required"/>
+
+												<xs:attribute name="ДатаПрин"
+															  type="xs:string"
+															  use="required"/>
+
+												<xs:attribute name="НБАкциз"
+															  type="xs:string"
+															  use="optional"/>
+
+												<xs:attribute name="ЕдИзмТовНБАкц"
+															  type="xs:string"
+															  use="optional"/>
+
+												<xs:attribute name="НБНДС"
+                                                              type="MoneyStr"
+                                                              use="required"/>
+
+												<xs:attribute name="СтАкцизТверд"
+															  type="xs:string"
+															  use="optional"/>
+
+												<xs:attribute name="СтАкцизАдвал"
+															  type="xs:string"
+															  use="optional"/>
+
+												<xs:attribute name="СтНДС"
+                                                              type="PercentStr"
+                                                              use="required"/>
+
+												<xs:attribute name="СумАкциз"
+															  type="xs:string"
+															  use="optional"/>
+
+												<xs:attribute name="СумНДС"
+                                                              type="MoneyStr"
+                                                              use="optional"/>
+
+												<xs:attribute name="ПрОсвАкциз"
+															  type="xs:string"
+															  use="required"/>
+
+												<xs:attribute name="ПрОсвНДС"
+															  type="xs:string"
+															  use="required"/>
+
+											</xs:complexType>
+
+										</xs:element>
+
+									</xs:sequence>
+
+									<!-- declaration attrs -->
+
+									<xs:attribute name="НомерДокНП"
+                                                  type="xs:string"
+                                                  use="required"/>
+
+									<xs:attribute name="ДатаДокНП"
+                                                  type="ДатаТип"
+                                                  use="required"/>
+
+									<xs:attribute name="ПрЛизинг"
+                                                  type="Bool01"
+                                                  use="required"/>
+
+									<xs:attribute name="ПрДавСырья"
+                                                  type="Bool01"
+                                                  use="required"/>
+
+									<xs:attribute name="БазаНДС"
+                                                  type="MoneyStr"
+                                                  use="required"/>
+
+									<xs:attribute name="ИтогоНДС"
+                                                  type="MoneyStr"
+                                                  use="optional"/>
+
+									<xs:attribute name="ИтогоАкциз"
+                                                  type="MoneyStr"
+                                                  use="optional"/>
+
+									<xs:attribute name="ПВДок"
+                                                  type="xs:string"
+                                                  use="required"/>
+
+								</xs:complexType>
+
+							</xs:element>
+
+						</xs:sequence>
+
+						<xs:attribute name="КНД"
+                                      type="xs:string"
+                                      use="required"/>
+
+						<xs:attribute name="ДатаДок"
+                                      type="ДатаТип"
+                                      use="required"/>
+
+					</xs:complexType>
+				</xs:element>
+
+			</xs:sequence>
+
+			<xs:attribute name="ИдФайл"
+                          type="xs:string"
+                          use="required"/>
+
+			<xs:attribute name="ВерсФорм"
+                          type="xs:string"
+                          use="required"/>
+
+			<xs:attribute name="ТипИнф"
+                          type="xs:string"
+                          use="required"/>
+
+			<xs:attribute name="ВерсПрог"
+                          type="xs:string"
+                          use="required"/>
+
+			<xs:attribute name="КодНО"
+                          type="xs:string"
+                          use="required"/>
+
+		</xs:complexType>
+	</xs:element>
+
+	<!-- ================= SIMPLE TYPES ================= -->
+
+	<xs:simpleType name="ДатаТип">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{2}\.\d{2}\.\d{4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ИННТип">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{10}|\d{12}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="КППТип">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d{9}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="MoneyStr">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d+(\.\d{1,6})?"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Decimal6Str">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d+\.\d{6}"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="PercentStr">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\d+(\.\d{1,2})?"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="Bool01">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0"/>
+			<xs:enumeration value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+	<xs:simpleType name="ПрПодпТип">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1"/>
+			<xs:enumeration value="2"/>
+			<xs:enumeration value="3"/>
+		</xs:restriction>
+	</xs:simpleType>
+
+</xs:schema>
