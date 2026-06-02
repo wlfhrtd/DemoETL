@@ -1,4 +1,6 @@
-﻿namespace DemoETL.Transformation.Interfaces;
+﻿using DemoETL.Domain.Models;
+
+namespace DemoETL.Transformation.Interfaces;
 
 /// <summary>
 /// Применяет xslt к xml.
@@ -41,8 +43,12 @@ public interface IXsltTransformer
     /// <param name="outputXmlPath">
     /// Путь к xml на выходе.
     /// </param>
+    /// <param name="documentContext">
+    /// Контекст документа.
+    /// </param>
     void Transform(
         string inputXmlPath,
         string xsltPath,
-        string outputXmlPath);
+        string outputXmlPath,
+        DocumentContext documentContext);
 }

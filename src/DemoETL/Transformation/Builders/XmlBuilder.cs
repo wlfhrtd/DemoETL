@@ -52,11 +52,11 @@ namespace DemoETL.Transformation.Builders
         /// </summary>
         /// <param name="model">Наша нормализованная модель</param>
         /// <returns>Промежуточный XML</returns>
-        public XDocument Build(ImportDeclaration model)
+        public XDocument Build(ImportDeclaration model, DocumentContext documentContext)
         {
             return new XDocument(
                 new XElement("Root",
-                    new XElement("IdFileSuffix", model.IdFileSuffix),
+                    new XElement("IdFileSuffix", documentContext.IdFileSuffix),
                     // СвОтпр
                     new XElement("Sender",
                         new XElement("INN", model.Inn ?? ""),

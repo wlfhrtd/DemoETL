@@ -1,4 +1,5 @@
-﻿using DemoETL.Transformation.Interfaces;
+﻿using DemoETL.Domain.Models;
+using DemoETL.Transformation.Interfaces;
 using System.Xml;
 using System.Xml.Xsl;
 
@@ -28,10 +29,12 @@ namespace DemoETL.Transformation.Transformers
         /// <param name="inputXml">Путь к файлу промежуточного XML</param>
         /// <param name="xsltPath">Путь к файлу XSLT</param>
         /// <param name="outputXml">Путь XML-файла на выходе</param>
+        /// <param name="documentContext">Контекст документа</param>
         public void Transform(
             string inputXml,
             string xsltPath,
-            string outputXml)
+            string outputXml,
+            DocumentContext documentContext)
         {
             var transform = new XslCompiledTransform();
 
@@ -42,14 +45,14 @@ namespace DemoETL.Transformation.Transformers
             var args = new XsltArgumentList();
 
             args.AddParam(
-                "dateDoc",
-                "",
-                DateTime.Now.ToString("dd.MM.yyyy"));
-
-            args.AddParam(
                 "dateId",
                 "",
-                DateTime.Now.ToString("yyyyMMdd"));
+                documentContext.DateId);
+
+            args.AddParam(
+                "dateDoc",
+                "",
+                documentContext.DateDoc);
 
             using var writer = XmlWriter.Create(
                 outputXml,

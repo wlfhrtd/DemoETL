@@ -8,8 +8,8 @@
         encoding="windows-1251"/>
 
 	<!-- тянем из C# -->
-	<xsl:param name="dateDoc"/>
 	<xsl:param name="dateId"/>
+	<xsl:param name="dateDoc"/>
 
 	<xsl:template match="/Root">
 

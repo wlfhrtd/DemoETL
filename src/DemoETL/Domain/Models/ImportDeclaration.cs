@@ -47,12 +47,6 @@
         public string OrganizationName { get; set; } = string.Empty;
 
         /// <summary>
-        /// Хвост для ИдФайл.
-        /// XSLT 1.0 не поддерживает GUID и не умеет в рандом.
-        /// </summary>
-        public string IdFileSuffix { get; set; } = Guid.NewGuid().ToString();
-
-        /// <summary>
         /// КодНО
         /// </summary>
         public string TaxAuthority { get; set; } = string.Empty;

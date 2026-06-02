@@ -152,6 +152,17 @@ public class Pipeline
 
         _logger.LogInformation("Enrichment completed");
 
+        // Контекст документа
+        var documentContext =
+            new DocumentContext
+            {
+                DateId = DateTime.Now.ToString("yyyyMMdd"),
+
+                DateDoc = DateTime.Now.ToString("dd.MM.yyyy"),
+
+                IdFileSuffix = Guid.NewGuid().ToString()
+            };
+
         // Бизнес-валидация
         _businessValidator.Validate(model);
 
@@ -176,7 +187,7 @@ public class Pipeline
                 options.DebugDirectory!);
         }
 
-        var intermediateXml = _xmlBuilder.Build(model);
+        var intermediateXml = _xmlBuilder.Build(model, documentContext);
 
         intermediateXml.Save(intermediateXmlPath);
 
@@ -196,7 +207,7 @@ public class Pipeline
         else
         {
             var fileName = FnsFileNameGenerator
-                .GenerateCanonicalName(documentType, model);
+                .GenerateCanonicalName(documentType, model, documentContext);
 
             finalXmlPath = Path.Combine(
                 "output",
@@ -212,7 +223,8 @@ public class Pipeline
         _xsltTransformer.Transform(
             intermediateXmlPath,
             xsltPath,
-            finalXmlPath);
+            finalXmlPath,
+            documentContext);
 
         _logger.LogInformation("Final XML generated: {Path}", finalXmlPath);
 
